@@ -31,9 +31,7 @@ class Pelicula:
         self.genero=genero
     
     def mostrar_informacion(self):
-        print (str(self.id)+ '- Nombre: ',self.nombre ,'\n   Actores: ' ,self.actores ,'\n   Año: ' , str(self.anho) , '\n   Genero: ',self.genero +'\n' )
+        print ('Nombre: ',self.nombre ,'\n   Actores: ' ,self.actores ,'\n   Año: ' , str(self.anho) , '\n   Genero: ',self.genero +'\n' )
 
-
-#p=Pelicula('avengers', 'robert patinson xd', 2012, 'ficcion')
-
-#p.mostrar_informacion()
+    def mostrar_peli(self):
+        print (str(self.id)+ '- Nombre: ',self.nombre)
