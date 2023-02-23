@@ -83,15 +83,124 @@ def filtrar_xGenero():
 def graficar():
     pass
 
+#metodo para imprimir toda la informacion contenida de las peliculas
 def mostrar_peliculas():
     global peliculas
-    for peli in peliculas:
-        peli.mostrar_informacion()
+    if validacion_arrVacio():
+        for peli in peliculas:
+            peli.mostrar_informacion()
+    else:
+        print('----- No hay elementos registrados -----')
 
+#mostrar la informacion de las peliculas con el id para el menu 2
+def mostrar_peliId():
+    global peliculas
+    if validacion_arrVacio():
+        for peli in peliculas:
+            peli.mostrar_peli()
+    else:
+        print('----- No hay elementos registrados -----')
+
+#validacion si el arreglo esta vacio peliculas
+def validacion_arrVacio():
+    global peliculas
+    if peliculas:
+        bandera=True
+    else:
+        bandera=False
+    return bandera
+
+#metodo para pausar la ejecucion del programa
 def pausa_informacion():
     print('        ******** presiona una tecla para continuar *****')
     ms_tp= input()
 
+
+
+
+#-------------------------------------------- Menus -------------------------------------------------------
+#menu filtrado
+def menu_3():
+    if validacion_arrVacio():
+        sl_pel=-1
+        while (sl_pel!=4):
+            try:
+                print(
+'''
+1. Filtrar por Actor
+2. FIltrar por Año
+3. Filtrar por genero
+'''
+                )
+                sl_pel=int(input("*** Seleccione una opcion ***\n"))
+                if sl_pel==1:
+                    pass
+                    pausa_informacion()
+                elif sl_pel==2:
+                    pass
+                elif sl_pel==3:
+                    pass
+                elif sl_pel==4:
+                    sl_pel=4
+                else:
+                    print('*** Opcion Invalida ***')
+            except:
+                print('*** Por favor seleccione una opcion valida -Err: menu_3filtrado***')
+    else:
+        print('----- No hay elementos registrados -----')
+
+#menu para mostrar los actores
+def menu_2actores():
+    global peliculas
+    if validacion_arrVacio():
+        seleccion_peli=-1
+        while (seleccion_peli!=0):
+            mostrar_peliId()
+            print('0- Regresar')
+            try:
+                seleccion_peli=int(input("*** Seleccione una opcion ***\n"))
+                if seleccion_peli>0 and seleccion_peli<=len(peliculas):
+                    actores=peliculas[seleccion_peli-1].getActores()
+                    print(peliculas[seleccion_peli-1].getNombre())
+                    for act in actores:
+                        print("     -"+act)
+                    pausa_informacion()
+                elif seleccion_peli==0:
+                    seleccion_peli=0
+                else:
+                    print('*** Opcion Invalida ***')
+            except:
+                print('*** Por favor seleccione una opcion valida -Err: menu_2Actores***')
+    else:
+        print('----- No hay elementos registrados -----')
+
+#menu gestionar peliculas
+def menu_2():
+    sel2=0
+    while(sel2!=3):
+        print('''
+1. Mostrar Peliculas
+2. Mostrar Actores
+3. regresar
+''')
+        try:
+            sel2=int(input("*** Seleccione una opcion ***\n"))
+            if sel2 == 1:
+                mostrar_peliculas()
+                pausa_informacion()
+            elif sel2 ==2:
+                menu_2actores()
+                pausa_informacion()
+            elif sel2 == 3:
+                print('regresando')
+                sel2=3
+            else:
+                print ('*** Opcion no disponible ***')
+        except:
+            print('*** Por favor seleccione una opcion valida -Err: menu_2***')
+        
+
+#toda la informacion del menu
 def menu():
     mensaje_inicio()
     pausa_informacion()
@@ -118,7 +227,7 @@ def menu():
                 mostrar_peliculas()
                 pausa_informacion()
             elif sl ==2:
-                print('gestion de peliculas')
+                menu_2()
             elif sl == 3:
                 print('filtrar peliculas')
             elif sl == 4:
@@ -132,10 +241,10 @@ def menu():
             else:
                 print ('*** Opcion no disponible ***')
         except:
-            print('*** Por favor seleccione una opcion valida ***')
+            print('*** Por favor seleccione una opcion valida -Err: menu***')
             
 
-
+#mensaje de informacion de la clase y estudiante
 def mensaje_inicio():
     print(
         '''
@@ -149,9 +258,9 @@ def mensaje_inicio():
         )
 
 
-
+#main
 if __name__== "__main__":
     menu()
 
 
-   
+                
