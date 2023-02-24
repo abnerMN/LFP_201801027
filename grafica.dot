@@ -1,0 +1,50 @@
+#plantilla
+#orientaciones LR TB BT RL
+digraph {
+    rankdir = LR
+
+pelicula1[
+    shape="record", label="nombre pelicula|{Año: 2020 |  Genero: accion}",
+    color= blue, 
+]
+
+pelicula2[
+    shape="record", label="nombre pelicula |{Año: 2020 |  Genero: accion}",
+    color= blue, 
+    
+
+]
+
+actor[shape="box", color=green, style=filled
+label="nombre actor 1"
+]
+
+
+pelicula3[
+    shape="record", label="nombre pelicula|{Año: 2020 |  Genero: accion}",
+    color= blue, 
+]
+
+pelicula4[
+    shape="record", label="nombre pelicula |{Año: 2020 |  Genero: accion}",
+    color= blue, 
+
+]
+
+actor2[shape="box", color=green, style=filled
+label="nombre actor 2"
+]
+
+
+pelicula3 -> actor2
+pelicula4 -> actor2
+
+pelicula1-> actor
+pelicula2 -> actor
+
+
+
+
+
+
+}
