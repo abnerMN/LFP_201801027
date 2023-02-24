@@ -1,8 +1,8 @@
 from tkinter import filedialog, Tk
 from Pelicula import Pelicula
+import os
 
 peliculas=[]
-actores={}
 
 #----------------------------ingreso de informacion -----------------------
 #lee el archivo y almacena la informacion
@@ -20,7 +20,6 @@ def leer_archivo():
         return None
     else:
         contador=1
-        cont_act=1
         texto = archivo.readlines()
         for i in texto:
             i= i.split(";")
@@ -53,14 +52,9 @@ def leer_archivo():
                         pass
             else:
                 peli = Pelicula(contador,t_nombre, t_actores, t_anhio, t_genero)
-                for act in t_actores:
-                    if act in actores:
-                        pass
-                    else:
-                        actores.setdefault(act,cont_act)
-                        cont_act+=1
                 contador+=1
                 peliculas.append(peli)
+        archivo.close()
 
 #---------------------------- manejo de la informacion -------------------
 #metodo para validar la existencia de una pelicula en los registros
@@ -117,7 +111,16 @@ def mostrar_pelixNombre (nombre_actor):
 
 #metodo para filtrar la informacion por medio del nombre del actor
 def filtrar_xActor():
-    global peliculas, actores
+    global peliculas
+    actores={}
+    contador=1
+    for peli in peliculas:
+        for ac in peli.getActores():
+            if ac in actores:
+                pass
+            else:
+                actores.setdefault(ac,contador)
+                contador+=1
     sla=-1
     while (sla!=0):
         print('********** Actores registrados **********')
@@ -139,7 +142,6 @@ def filtrar_xActor():
             pausa_informacion()
         except:
             print('*** Por favor seleccione una opcion valida -Err: filtrar_xActor***')
-    del sla
 
 #metodo para filtrar la informacion por medio del año de publicacion
 def filtrar_xAnho():
@@ -172,7 +174,7 @@ def filtrar_xAnho():
             pausa_informacion()
         except:
             print('*** Por favor seleccione una opcion valida -Err: filtrar_xAnho***')
-    del slan
+ 
 
 #metodo para filtrar la informacion por medio del genero de la pelicula
 def filtrar_xGenero():
@@ -205,13 +207,54 @@ def filtrar_xGenero():
             pausa_informacion()
         except:
             print('*** Por favor seleccione una opcion valida -Err: filtrar_xAnho***')
-    del slan
+
 
 #--------------------------------grafica de la informacion ---------------------
 def graficar():
-    txt='encabezado de la grafica'
-    #para la generacion de la grafica se realizara con la ayuda del metodo de la busqueda por actor
-    print('aqui va la grafica ')
+    global peliculas
+    actores={}
+    cont=1
+    if validacion_arrVacio():
+        for peli in peliculas:
+            for ac in peli.getActores():
+                if ac in actores:
+                    pass
+                else:
+                    actores.setdefault(ac,cont)
+                    cont+=1           
+        archivo_DOT= open("imagen.dot","w")
+        txt='''digraph {
+    rankdir = LR
+    '''
+        for peli in peliculas:
+            txt+='''
+    pelicula'''+str(peli.getId())+'''[
+        shape="record", label="'''+peli.getNombre()+'''|{'''+peli.getAnho()+''' | '''+peli.getGenero()+'''}",
+        color= blue
+        ]
+            '''
+        
+        for ac in actores:
+            txt+='''
+    actor'''+str(actores[ac])+'''[shape="box", color=green, style=filled
+        label="'''+ac+'''"
+        ]
+'''
+        for ac in actores:
+            for peli in peliculas:
+                for act in peli.getActores():
+                    if ac == act:
+                        txt+="pelicula"+str(peli.getId())+"->"+"actor"+str(actores[ac])+'\n'
+                    else:
+                        pass
+
+        txt+="}"
+        archivo_DOT.write(txt)
+        archivo_DOT.close()
+        os.system("dot.exe -Tpdf imagen.dot -o grafica.pdf")
+    else:
+        print('----- No se puede graficar, No hay elementos registrados Err: graficar-----')
+
 
 #metodo para imprimir toda la informacion contenida de las peliculas
 def mostrar_peliculas():
@@ -396,5 +439,7 @@ def mensaje_inicio():
 
 #main
 if __name__== "__main__":
-    menu()
+   # menu()
+   leer_archivo()
+   graficar()
                 

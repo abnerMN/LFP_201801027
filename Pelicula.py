@@ -6,6 +6,9 @@ class Pelicula:
         self.anho=anho
         self.genero=genero
     
+    def getId(self):
+        return self.id
+    
     def getNombre(self):
         return self.nombre
     

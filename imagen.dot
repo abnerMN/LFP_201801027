@@ -1,0 +1,107 @@
+digraph {
+    rankdir = LR
+    
+    pelicula1[
+        shape="record", label="The Avengers|{2012 | Ficcion}",
+        color= blue
+        ]
+            
+    pelicula2[
+        shape="record", label="Spiderman|{2002 | Accion}",
+        color= blue
+        ]
+            
+    pelicula3[
+        shape="record", label="The Amazing Spiderman|{2012 | Accion}",
+        color= blue
+        ]
+            
+    pelicula4[
+        shape="record", label="Spiderman Homecoming|{2017 | Accion}",
+        color= blue
+        ]
+            
+    pelicula5[
+        shape="record", label="Avengers Infinity War|{2018 | Acion}",
+        color= blue
+        ]
+            
+    pelicula6[
+        shape="record", label="black adam|{2020 | fantasia}",
+        color= blue
+        ]
+            
+    pelicula7[
+        shape="record", label="The Amazing Spiderman 2|{2014 | Accion}",
+        color= blue
+        ]
+            
+    actor1[shape="box", color=green, style=filled
+        label="Robert Downey Jr"
+        ]
+
+    actor2[shape="box", color=green, style=filled
+        label="Chris Evans"
+        ]
+
+    actor3[shape="box", color=green, style=filled
+        label="Chris Hemsworth"
+        ]
+
+    actor4[shape="box", color=green, style=filled
+        label="Tobey Maguire"
+        ]
+
+    actor5[shape="box", color=green, style=filled
+        label="Kirsten Dunst"
+        ]
+
+    actor6[shape="box", color=green, style=filled
+        label="Willem Dafoe"
+        ]
+
+    actor7[shape="box", color=green, style=filled
+        label="Andrew Garfield"
+        ]
+
+    actor8[shape="box", color=green, style=filled
+        label="Emma Stone"
+        ]
+
+    actor9[shape="box", color=green, style=filled
+        label="Tom Holland"
+        ]
+
+    actor10[shape="box", color=green, style=filled
+        label="Zendaya"
+        ]
+
+    actor11[shape="box", color=green, style=filled
+        label="dwayne johnson"
+        ]
+
+    actor12[shape="box", color=green, style=filled
+        label="Sarah shahi"
+        ]
+
+    actor13[shape="box", color=green, style=filled
+        label="Henry cavill"
+        ]
+pelicula1->actor1
+pelicula5->actor1
+pelicula1->actor2
+pelicula1->actor3
+pelicula2->actor4
+pelicula2->actor5
+pelicula2->actor6
+pelicula3->actor7
+pelicula7->actor7
+pelicula3->actor8
+pelicula7->actor8
+pelicula4->actor9
+pelicula5->actor9
+pelicula4->actor10
+pelicula6->actor11
+pelicula6->actor12
+pelicula6->actor13
+}

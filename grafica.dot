@@ -4,12 +4,12 @@ digraph {
     rankdir = LR
 
 pelicula1[
-    shape="record", label="nombre pelicula|{Año: 2020 |  Genero: accion}",
+    shape="record", label="nombre pelicula1|{Año: 2020 |  Genero: accion}",
     color= blue, 
 ]
 
 pelicula2[
-    shape="record", label="nombre pelicula |{Año: 2020 |  Genero: accion}",
+    shape="record", label="nombre pelicula 2|{Año: 2020 |  Genero: accion}",
     color= blue, 
     
 
@@ -21,12 +21,12 @@ label="nombre actor 1"
 
 
 pelicula3[
-    shape="record", label="nombre pelicula|{Año: 2020 |  Genero: accion}",
+    shape="record", label="nombre pelicula3|{Año: 2020 |  Genero: accion}",
     color= blue, 
 ]
 
 pelicula4[
-    shape="record", label="nombre pelicula |{Año: 2020 |  Genero: accion}",
+    shape="record", label="nombre pelicula4 |{Año: 2020 |  Genero: accion}",
     color= blue, 
 
 ]
@@ -36,11 +36,13 @@ label="nombre actor 2"
 ]
 
 
-pelicula3 -> actor2
-pelicula4 -> actor2
+
 
 pelicula1-> actor
 pelicula2 -> actor
+
+pelicula3 -> actor2
+pelicula4 -> actor2
 
 
 
