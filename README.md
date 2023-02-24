@@ -10,3 +10,6 @@ para visualizar la informacion almacenada en el programa
 
 Nota: La informacion con que se trabaja es almacenada solo
 cuando se este ejecutando el programa
+
+Nota 2: Para la ejecucion del programa es con 
+Operaciones.py
