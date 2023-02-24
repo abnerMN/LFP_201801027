@@ -35,3 +35,10 @@ class Pelicula:
 
     def mostrar_peli(self):
         print (str(self.id)+ '- Nombre: ',self.nombre)
+    
+    def mostrar_busquedaXator(self):
+        print (
+            '   Nombre: ', self.nombre,'\n',
+            '   Anho: ', self.genero,'\n',
+            '   Genero: ', self.genero
+        )

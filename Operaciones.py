@@ -2,9 +2,11 @@ from tkinter import filedialog, Tk
 from Pelicula import Pelicula
 
 peliculas=[]
+actores={}
 
 #lee el archivo y almacena la informacion
 def leer_archivo():
+    global actores
     Tk().withdraw()
     archivo = filedialog.askopenfile(
         title= "sle un archivo",
@@ -17,6 +19,7 @@ def leer_archivo():
         return None
     else:
         contador=1
+        cont_act=1
         texto = archivo.readlines()
         for i in texto:
             i= i.split(";")
@@ -49,6 +52,12 @@ def leer_archivo():
                         pass
             else:
                 peli = Pelicula(contador,t_nombre, t_actores, t_anhio, t_genero)
+                for act in t_actores:
+                    if act in actores:
+                        pass
+                    else:
+                        actores.setdefault(act,cont_act)
+                        cont_act+=1
                 contador+=1
                 peliculas.append(peli)
 
@@ -65,14 +74,50 @@ def buscar_pelicula(nombre_peli):
 def buscar_actor(nombre_actor):
     pass
 
-def mostrar_peliculas():
-    pass
-
 def mostrar_actores():
     pass
 
+#mostrar peliculas donde aparece un actor
+def mostrar_pelixNombre (nombre_actor):
+    global peliculas
+    tmp_peli=[]
+    for peli in peliculas:
+        for act in peli.getActores():
+            if nombre_actor == act:
+                tmp_peli.append(peli)
+            else:
+                pass
+    print(nombre_actor)
+    for p in tmp_peli:
+        p.mostrar_busquedaXator()
+        print()
+
+
+
 def filtrar_xActor():
-    pass
+    global peliculas, actores
+    sla=-1
+    while (sla!=0):
+        print('********** Actores registrados **********')
+        for act in actores:
+            print(actores[act] ,'.- ',act)
+        print('0.- Regresar')
+        try:
+            sla=int(input('*** Seleccione una opcion ***\n'))
+            if sla>0 and sla <= len(actores):
+                for act in actores:
+                    if sla == actores[act]:
+                        mostrar_pelixNombre(act)
+                    else:
+                         pass
+            elif sla==0:
+                break
+            else:
+                print('*** Opcion invalida ***')
+            pausa_informacion()
+        except:
+            print('*** Por favor seleccione una opcion valida -Err: filtrar_xActor***')
+
 
 def filtrar_xAnho():
     pass
@@ -134,7 +179,7 @@ def menu_3():
                 )
                 sl_pel=int(input("*** Seleccione una opcion ***\n"))
                 if sl_pel==1:
-                    pass
+                    filtrar_xActor()
                     pausa_informacion()
                 elif sl_pel==2:
                     pass
@@ -260,7 +305,8 @@ def mensaje_inicio():
 
 #main
 if __name__== "__main__":
-    menu()
-
+  #  menu()
+  leer_archivo()
+  menu_3()
 
                 
