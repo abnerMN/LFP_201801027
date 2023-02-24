@@ -4,6 +4,7 @@ from Pelicula import Pelicula
 peliculas=[]
 actores={}
 
+#----------------------------ingreso de informacion -----------------------
 #lee el archivo y almacena la informacion
 def leer_archivo():
     global actores
@@ -61,6 +62,7 @@ def leer_archivo():
                 contador+=1
                 peliculas.append(peli)
 
+#---------------------------- manejo de la informacion -------------------
 #metodo para validar la existencia de una pelicula en los registros
 def buscar_pelicula(nombre_peli):
     global peliculas
@@ -70,13 +72,7 @@ def buscar_pelicula(nombre_peli):
             bandera=True
     return bandera
 
-#metodo para buscar actores 
-def buscar_actor(nombre_actor):
-    pass
-
-def mostrar_actores():
-    pass
-
+#metodo para filtrar la inforacion por medio del genero de las peliculas
 def mostrar_pelixGenero(genero):
     global peliculas
     tmp_peli=[]
@@ -90,6 +86,7 @@ def mostrar_pelixGenero(genero):
         p.mostrar_busquedaGenero()
         print()
 
+#metodo para mostrar la informacion de peliculas por medio del año
 def mostrar_pelixAnho(anho):
     global peliculas
     tmp_peli=[]
@@ -102,7 +99,6 @@ def mostrar_pelixAnho(anho):
     for p in tmp_peli:
         p.mostrar_busquedaAnho()
         print()
-
 
 #mostrar peliculas donde aparece un actor
 def mostrar_pelixNombre (nombre_actor):
@@ -119,6 +115,7 @@ def mostrar_pelixNombre (nombre_actor):
         p.mostrar_busquedaXator()
         print()
 
+#metodo para filtrar la informacion por medio del nombre del actor
 def filtrar_xActor():
     global peliculas, actores
     sla=-1
@@ -144,6 +141,7 @@ def filtrar_xActor():
             print('*** Por favor seleccione una opcion valida -Err: filtrar_xActor***')
     del sla
 
+#metodo para filtrar la informacion por medio del año de publicacion
 def filtrar_xAnho():
     global peliculas
     anhos={}
@@ -176,6 +174,7 @@ def filtrar_xAnho():
             print('*** Por favor seleccione una opcion valida -Err: filtrar_xAnho***')
     del slan
 
+#metodo para filtrar la informacion por medio del genero de la pelicula
 def filtrar_xGenero():
     global peliculas
     generos={}
@@ -208,6 +207,7 @@ def filtrar_xGenero():
             print('*** Por favor seleccione una opcion valida -Err: filtrar_xAnho***')
     del slan
 
+#--------------------------------grafica de la informacion ---------------------
 def graficar():
     pass
 
