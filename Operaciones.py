@@ -209,7 +209,9 @@ def filtrar_xGenero():
 
 #--------------------------------grafica de la informacion ---------------------
 def graficar():
-    pass
+    txt='encabezado de la grafica'
+    #para la generacion de la grafica se realizara con la ayuda del metodo de la busqueda por actor
+    print('aqui va la grafica ')
 
 #metodo para imprimir toda la informacion contenida de las peliculas
 def mostrar_peliculas():
