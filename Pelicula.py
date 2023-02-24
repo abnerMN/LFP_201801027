@@ -42,3 +42,16 @@ class Pelicula:
             '   Anho: ', self.genero,'\n',
             '   Genero: ', self.genero
         )
+
+    def mostrar_busquedaAnho(self):
+        print(
+            '   Nombre: ',self.nombre,'\n'
+            '   Genero: ',self.genero
+        )
+
+    def mostrar_busquedaGenero(self):
+        print(
+            '   Nombre: ',self.nombre,'\n'
+            '   Año: ',self.anho
+        )
+    
