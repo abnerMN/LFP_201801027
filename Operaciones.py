@@ -10,7 +10,7 @@ def leer_archivo():
     global actores
     Tk().withdraw()
     archivo = filedialog.askopenfile(
-        title= "sle un archivo",
+        title= "seleccione un archivo",
         initialdir="./",
         filetypes= {
             ("archivos LFP", "*.lfp")
@@ -252,6 +252,8 @@ def graficar():
         archivo_DOT.write(txt)
         archivo_DOT.close()
         os.system("dot.exe -Tpdf imagen.dot -o grafica.pdf")
+        os.startfile("grafica.pdf")
+        print('**** Archivo Generado exitossamente ****')
     else:
         print('----- No se puede graficar, No hay elementos registrados Err: graficar-----')
 
@@ -274,7 +276,7 @@ def mostrar_peliId():
     else:
         print('----- No hay elementos registrados -----')
 
-#validacion si el arreglo esta vacio peliculas
+#funcion validacion si el arreglo esta vacio peliculas
 def validacion_arrVacio():
     global peliculas
     if peliculas:
@@ -410,7 +412,8 @@ def menu():
                 menu_3()
                 pausa_informacion()
             elif sl == 4:
-                print('')
+                graficar()
+                pausa_informacion()
             elif sl == 5:
                 mensaje_inicio()
                 pausa_informacion()
@@ -439,7 +442,5 @@ def mensaje_inicio():
 
 #main
 if __name__== "__main__":
-   # menu()
-   leer_archivo()
-   graficar()
+    menu()
                 
